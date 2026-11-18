@@ -1,68 +1,44 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#020b1d">
-  <meta name="description" content="Deadline Mode — a beautiful, customizable countdown and milestone planner.">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#020817">
+  <meta name="description" content="Deadline Mode turns your next big deadline into a beautiful lock-screen countdown and an actionable milestone plan.">
   <title>Deadline Mode — Your Countdown, Your Design</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
-  <main class="shell">
-    <header class="topbar">
-      <a class="brand" href="#top" aria-label="Deadline Mode home"><span class="brand-mark">D</span><span>DEADLINE<span class="brand-muted">MODE</span></span></a>
-      <button class="icon-button" id="editToggle" aria-expanded="false" aria-controls="settingsPanel">⚙ <span>Customize</span></button>
+  <main class="shell" id="app">
+    <header class="topbar"><a class="brand" href="#top"><span class="brand-mark">D</span><span>DEADLINE<span class="brand-muted">MODE</span></span></a>
+      <div class="top-actions"><button class="icon-button" id="wallpaperToggle" aria-pressed="false">▣ <span>Lock-screen view</span></button><button class="icon-button" id="editToggle" aria-expanded="false" aria-controls="settingsPanel">⚙ <span>Customize</span></button></div>
     </header>
-
     <section class="hero" id="top">
       <div class="eyebrow"><span class="live-dot"></span> YOUR GOAL. YOUR MOMENT.</div>
-      <h1 id="eventTitle">Your next big deadline.</h1>
-      <p class="subtitle">Turn the time you have into progress you can see.</p>
-
-      <div class="count-card">
+      <h1 id="eventTitle">Your next big deadline.</h1><p class="subtitle">Turn the time you have into progress you can see.</p>
+      <div class="count-card" id="countCard">
+        <div class="lock-clock" id="lockClock" aria-hidden="true">--:--</div>
         <div class="count-ring" aria-hidden="true"><div class="ring-inner"><span class="count-number" id="days">—</span><span class="count-label">DAYS LEFT</span></div></div>
-        <div class="time-grid" aria-label="Time remaining">
-          <div><strong id="hours">—</strong><span>HOURS</span></div><i>:</i>
-          <div><strong id="minutes">—</strong><span>MINUTES</span></div><i>:</i>
-          <div><strong id="seconds">—</strong><span>SECONDS</span></div>
-        </div>
+        <div class="time-grid" aria-label="Time remaining"><div><strong id="hours">—</strong><span>HOURS</span></div><i>:</i><div><strong id="minutes">—</strong><span>MINUTES</span></div><i>:</i><div><strong id="seconds">—</strong><span>SECONDS</span></div></div>
         <p class="deadline-line" id="deadlineText">Loading deadline…</p>
       </div>
-
       <div class="quote-row"><span class="quote-line"></span><p>MAKE IT. <b>POLISH IT.</b> SHIP IT.</p><span class="quote-line"></span></div>
     </section>
-
-    <section class="milestones-section">
-      <div class="section-heading"><div><span class="eyebrow small">THE ROAD TO DONE</span><h2>Milestones</h2></div><span class="progress-copy" id="progressCopy">0 OF 4 COMPLETE</span></div>
-      <div class="progress-track"><span id="progressBar"></span></div>
-      <div class="milestones" id="milestones">
-        <label class="milestone"><input type="checkbox" checked><span class="check"></span><span class="step">01</span><span class="milestone-text"><b>Build the core</b><small>Make the essential experience work.</small></span></label>
-        <label class="milestone"><input type="checkbox" checked><span class="check"></span><span class="step">02</span><span class="milestone-text"><b>Refine the design</b><small>Make every detail feel intentional.</small></span></label>
-        <label class="milestone"><input type="checkbox"><span class="check"></span><span class="step">03</span><span class="milestone-text"><b>Test & fix</b><small>Check it on your phone and desktop.</small></span></label>
-        <label class="milestone"><input type="checkbox"><span class="check"></span><span class="step">04</span><span class="milestone-text"><b>Submit on time</b><small>Share your finished work with the world.</small></span></label>
-      </div>
+    <section class="milestones-section"><div class="section-heading"><div><span class="eyebrow small">THE ROAD TO DONE</span><h2>Milestones</h2></div><span class="progress-copy" id="progressCopy">0 OF 4 COMPLETE</span></div>
+      <div class="progress-track"><span id="progressBar"></span></div><div class="milestones" id="milestones" aria-live="polite"></div>
+      <form class="add-milestone" id="milestoneForm"><input id="milestoneInput" maxlength="48" placeholder="Add your next milestone…" aria-label="New milestone" required><button class="primary-button" type="submit">＋ Add</button></form>
     </section>
-
-    <section class="bottom-actions"><button class="primary-button" id="focusButton">Enter focus mode <span>↗</span></button><button class="text-button" id="shareButton">Share countdown</button></section>
-
-    <section class="settings-panel" id="settingsPanel" hidden>
-      <div class="settings-head"><div><span class="eyebrow small">MAKE IT YOURS</span><h2>Countdown settings</h2></div><button class="close-button" id="closeSettings" aria-label="Close settings">×</button></div>
-      <form id="settingsForm">
-        <label>Deadline name<input id="titleInput" maxlength="60" value="Your next big deadline."></label>
-        <label>Deadline date & time<input id="dateInput" type="datetime-local" required></label>
-        <div class="form-actions"><button class="primary-button" type="submit">Save changes <span>✓</span></button><button class="text-button" type="button" id="resetButton">Reset demo</button></div>
-      </form>
+    <section class="bottom-actions"><button class="primary-button" id="focusButton">Enter focus mode <span>↗</span></button><button class="text-button" id="shareButton">Share countdown</button><button class="text-button" id="wallpaperDownload">Save lock-screen design</button></section>
+    <section class="settings-panel" id="settingsPanel" hidden><div class="settings-head"><div><span class="eyebrow small">MAKE IT YOURS</span><h2>Countdown settings</h2></div><button class="close-button" id="closeSettings" aria-label="Close settings">×</button></div>
+      <form id="settingsForm"><label>Deadline name<input id="titleInput" maxlength="60" value="Your next big deadline."></label><label>Deadline date & time<input id="dateInput" type="datetime-local" required></label>
+        <label>Accent theme<select id="themeInput"><option value="cyan">Electric cyan</option><option value="violet">Neon violet</option><option value="lime">Focus lime</option></select></label>
+        <div class="form-actions"><button class="primary-button" type="submit">Save changes <span>✓</span></button><button class="text-button" type="button" id="resetButton">Reset demo</button></div></form>
       <p class="note">Your settings and milestone progress are saved in this browser only.</p>
     </section>
-
     <footer><span>DEADLINE MODE</span><span>SMALL STEPS. BIG FINISH.</span></footer>
   </main>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="app.js"></script>
-</body>
-</html>
+</body></html>

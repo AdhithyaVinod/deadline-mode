@@ -1,37 +1,38 @@
 # Deadline Mode — Your Countdown, Your Design
 
-A responsive, mobile-friendly countdown and milestone planner created for the Handshake AI Skills Studio × Google November challenge.
+A responsive countdown and milestone planner built for the Handshake AI Skills Studio × Google November challenge: **Your Deadline, Your Design: Create a Countdown Lock Screen**.
 
 ## Features
-- Live countdown with days, hours, minutes and seconds
-- Editable deadline title and date/time
-- Four interactive milestones with a completion bar
-- Saves settings and milestone progress in the browser (`localStorage`)
-- Focus mode for a distraction-free countdown
-- Share button using the device share sheet when supported
+- Live days, hours, minutes and seconds countdown
+- Lock-screen view with prominent clock and simplified layout
+- Print-to-PDF option for saving the lock-screen composition
+- Editable deadline title, date/time and accent theme
+- Add, complete and remove milestones (up to 8)
+- Progress bar and completion count
+- Focus mode and native share support
+- Saves settings and milestone progress in the current browser using `localStorage`
 - Responsive layout for phones, tablets and desktops
 
 ## Run locally
-No build tools or backend are required.
+No build tools, Node.js or backend are required.
 
-1. Extract the ZIP.
-2. Open `index.html` in a modern browser, or run a local server from this folder:
-   - Python: `python -m http.server 8000`
-   - Then visit `http://localhost:8000`
+1. Extract the project folder.
+2. Open `index.html` in a modern browser, or run `python -m http.server 8000` in this folder.
+3. Visit `http://localhost:8000`.
 
-## Publish free
-You can deploy this static site using GitHub Pages or Netlify:
-- GitHub Pages: create a repository, upload the contents of this folder, then enable Pages in repository Settings.
-- Netlify: drag the extracted `deadline-mode` folder into Netlify Drop.
+## Publish with GitHub Pages
+The repository should contain `index.html`, `styles.css`, `app.js` and the `assets` folder at its root. In repository **Settings → Pages**, choose **Deploy from a branch**, select `main` and `/(root)`, then save.
 
-After deployment, copy the public URL for your Handshake project submission.
+## Default challenge countdown
+The default is **24 November 2026, 12:29 PM India Standard Time**, corresponding to **23 November 2026, 11:59 PM Pacific Time**, the entry deadline stated in the official rules. The date can be changed in Customize.
 
-## Default countdown
-The default is 24 November 2026, 12:29 PM India Standard Time. This corresponds to the contest entry deadline of 23 November 2026, 11:59 PM Pacific Time stated in the official rules. The date is editable in Customize.
-
-## Project submission copy
+## Suggested Handshake submission
 **Title:** Deadline Mode — Your Countdown, Your Design
 
-**Description:** Deadline Mode is a clean, responsive countdown experience that turns an important deadline into a clear action plan. It displays a live countdown, lets users personalize the deadline, tracks milestone completion, and offers a distraction-free focus mode. Settings and progress are saved locally in the user's browser, making it simple to return and keep moving toward the goal.
+**Description:** Deadline Mode turns an important deadline into a clear, personal action plan. Its live countdown can be personalized with a title, date and accent theme, while editable milestones help users break a big goal into achievable steps. A dedicated lock-screen view emphasizes the clock and remaining time, and a print-to-PDF option lets users save the composition. Progress and settings are stored locally in the browser.
 
 **Cover image:** `assets/cover.png`
+
+## Notes
+- Settings and milestone progress are stored locally in each browser; they are not synced across devices.
+- The lock-screen view is a web preview. It does not automatically install itself as the device's wallpaper; use the browser's print-to-PDF flow to save the composition.
